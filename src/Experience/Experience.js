@@ -1,5 +1,6 @@
 import Letters from './Utils/Letters'
 import Find from './Utils/Find'
+import Clear from './Utils/Clear'
 
 class Experience
 {
@@ -30,6 +31,7 @@ class Experience
         // Other Classes
         this.letters = new Letters()
         this.find = new Find()
+        this.clear = new Clear()
 
         // Onclicks
         this.buttons()
@@ -37,7 +39,7 @@ class Experience
 
     buttons()
     {
-        this.clearButton.onclick = () => {}
+        this.clearButton.onclick = () => {this.clear.clear()}
         this.findButton.onclick = () => {this.find.find()}
     }
 }

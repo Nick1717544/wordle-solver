@@ -1,6 +1,6 @@
 import Experience from "../Experience"
 import { word } from '../../words'
-import { includesMultipleLetters } from './Check'
+import { includesMultipleLetters, doesntIncludeLetters } from './Check'
 
 class Find
 {
@@ -66,7 +66,7 @@ class Find
         {
             for (let i = 0; i < this.yellowWords.length; i++)
             {
-                if (includesMultipleLetters(`${this.yellowWords[i]}`, `${this.gray}`) == false)
+                if (doesntIncludeLetters(`${this.yellowWords[i]}`, `${this.gray}`) == true)
                 {
                     this.grayWords.push(this.yellowWords[i])
                 }
