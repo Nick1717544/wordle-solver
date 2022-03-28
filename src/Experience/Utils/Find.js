@@ -46,14 +46,33 @@ class Find
     checkYellowLetters()
     {
         this.yellowWords = []
-        for (let i = 0; i < this.greenWords.length; i++)
+        if (this.yellow)
         {
-            if (includesMultipleLetters(`${this.greenWords[i]}`, `${this.yellow}`) == true)
+            for (let i = 0; i < this.greenWords.length; i++)
             {
-                this.yellowWords.push(this.greenWords[i])
+                if (includesMultipleLetters(`${this.greenWords[i]}`, `${this.yellow}`) == true)
+                {
+                    this.yellowWords.push(this.greenWords[i])
+                }
             }
-        }
-        console.log(this.yellowWords);
+        } else {this.yellowWords = this.greenWords}
+        this.checkGrayLetters()
+    }
+
+    checkGrayLetters()
+    {
+        this.grayWords = []
+        if (this.gray)
+        {
+            for (let i = 0; i < this.yellowWords.length; i++)
+            {
+                if (includesMultipleLetters(`${this.yellowWords[i]}`, `${this.gray}`) == false)
+                {
+                    this.grayWords.push(this.yellowWords[i])
+                }
+            }
+        } else {this.grayWords = this.yellowWords}
+        this.experience.answerHTML.value = `${this.grayWords.toString().replaceAll(',', ', ')}`
     }
 
     g1L(i)
